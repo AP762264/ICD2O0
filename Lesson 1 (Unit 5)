@@ -1,0 +1,6 @@
+class Main {
+    public static void main(String[] args) {
+        // Calculate 6 * 4 and include the result in the output
+        System.out.println("6 times 4 = " + (6 * 4));
+    }
+}

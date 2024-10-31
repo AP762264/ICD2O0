@@ -1,0 +1,16 @@
+class Main {
+  public static void main(String[] args) {
+    System.out.println("Welcome to Sanjay's Koala Party!");
+    System.out.print("It's possible Sanjay can distribute " + 12);
+    System.out.println(" cookies for each bowl.");
+
+    // Task B: Displaying bowls and cookies
+    int bowls = 6;
+    int cookies = 144;
+    System.out.println("Sanjay has " + bowls + " bowls for " + cookies + " cookies.");
+
+    // Task C: Calculate and display cookies per bowl
+    int cookiesPerBowl = cookies / bowls; // Calculate cookies per bowl
+    System.out.println("The number of cookies per bowl is: " + cookiesPerBowl);
+  }
+}

@@ -1,0 +1,23 @@
+class Main {
+  public static void main(String[] args) {
+    // Task A
+    System.out.println("What mammal has the most teeth?");
+    System.out.print("The Giant Armadillo has ");
+    System.out.print(74);
+    System.out.println(" teeth.");
+    System.out.println();
+
+    // Task B
+    int keyboardKeys = 102; // Declaring the variable for keyboard keys
+    System.out.println("The number of keys on a keyboard is " + keyboardKeys + ".");
+    
+    double pi = 3.14; // Declaring the variable for PI
+    System.out.println("The value of PI is: " + pi);
+
+    // Task C
+    double circ;
+    double rad = 0.5; // the radius
+    circ = 2 * Math.PI * rad; // the circumference
+    System.out.println("The circumference of a circle of radius " + rad + " is " + circ + ".");
+  }
+}
