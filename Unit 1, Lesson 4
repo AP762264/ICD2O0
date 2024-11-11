@@ -1,0 +1,30 @@
+class Main {
+    public static void main(String[] args) {
+        // Task 1: Initial output
+        System.out.println(24);
+
+        // Task 2: Using a variable
+        int amount = 24;
+        System.out.print(amount);
+        System.out.println(" Two dozen is: " + amount);
+
+        // Task 3: Multiplication
+        amount = 7 * 4;
+        System.out.println("forty-two is: " + amount);
+
+        // Task 4: Incrementing the amount
+        amount = 8;
+        amount = amount + 1;
+        System.out.println(amount);
+
+        // Task 5: Multiplication and division
+        int a = 8;
+        int b = 3;
+        System.out.println(a * b); // 24
+        System.out.println(a / b); // 2
+
+        // Task 6: Division with double
+        double aDouble = 8.0;
+        System.out.println(aDouble / b); // 2.6666666666666665
+    }
+}
