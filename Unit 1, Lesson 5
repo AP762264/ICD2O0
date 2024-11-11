@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        // Hardcoded inputs for year of birth and age
+        int birthYear = 2008; // Year of birth
+        int age = 16; // Age
+
+        // Step 1: Print the hardcoded values
+        System.out.println("Year of Birth: " + birthYear);
+        System.out.println("Age: " + age);
+
+        // Step 2: Double the birth year and add 5
+        int doubledBirthYear = birthYear * 2 + 5;
+
+        // Step 3: Multiply the result by 50 and add age
+        int resultAfterMultiplication = doubledBirthYear * 50 + age;
+
+        // Step 4: Subtract 250 from the result and divide by 100
+        double finalResult = (resultAfterMultiplication - 250) / 100.0;
+
+        // Step 5: Print the result and interpret it
+        System.out.println("The final result of the calculations is: " + finalResult);
+        System.out.println("This number represents a unique value derived from your age and birth year.");
+    }
+}
