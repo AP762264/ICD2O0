@@ -1,1 +1,17 @@
+import java.util.Scanner;
 
+class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Please enter the probability of precipitation (0 to 1): ");
+    double precipitation = sc.nextDouble();
+
+    if (precipitation < 0.07) {
+      System.out.println("The forecast is dry weather.");
+    } else if (precipitation <= 0.6) {
+      System.out.println("There is a small chance of rain.");
+    } else {
+      System.out.println("The forecast is rain.");
+    }
+  }
+}
