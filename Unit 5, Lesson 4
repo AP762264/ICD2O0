@@ -1,1 +1,9 @@
+class Main {
+    public static void main(String[] args) {
+        // Declare and initialize the variable
+        String lastMonth = "August";  // Declare 'lastMonth' as a String and initialize it
 
+        // Correct the print statement
+        System.out.println("The last month was: " + lastMonth);  // Use + for string concatenation
+    }
+}
