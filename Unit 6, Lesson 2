@@ -1,1 +1,48 @@
+import java.util.Scanner;
 
+public class Calc {
+    public static void main(String[] args) {
+        // Create a scanner object for input
+        Scanner scan = new Scanner(System.in);
+
+        // Prompt user for input and store the values
+        System.out.print("Please input two numbers: ");
+        double num1 = scan.nextDouble(); // First number
+        double num2 = scan.nextDouble(); // Second number
+
+        // Ask for operator
+        System.out.print("Please input an operator (+, -, *, or /): ");
+        char operator = scan.next().charAt(0); // Get the operator as a char
+
+        // Perform the operation based on the operator
+        double result = 0.0;
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    System.out.println("Error: Division by zero.");
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Error: Invalid operator.");
+                return;
+        }
+
+        // Output the result of the operation
+        System.out.printf("%.1f %c %.1f = %.1f\n", num1, operator, num2, result);
+        
+        // Close the scanner
+        scan.close();
+    }
+}
