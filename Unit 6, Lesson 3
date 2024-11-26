@@ -1,1 +1,33 @@
+import java.util.Scanner;
 
+public class Marks {
+    public static void main(String[] args) {
+        // Create a scanner object for input
+        Scanner scan = new Scanner(System.in);
+
+        // Ask the user to input a percentage mark between 0 and 100
+        System.out.print("Please enter a percentage mark: ");
+        int mark = scan.nextInt();
+
+        // Determine the letter grade based on the mark
+        if (mark >= 80 && mark <= 100) {
+            System.out.println(mark + " is a letter grade of A.");
+        } else if (mark >= 70 && mark <= 79) {
+            System.out.println(mark + " is a letter grade of B.");
+        } else if (mark >= 60 && mark <= 69) {
+            System.out.println(mark + " is a letter grade of C.");
+        } else if (mark >= 50 && mark <= 59) {
+            System.out.println(mark + " is a letter grade of D.");
+        } else if (mark >= 0 && mark <= 49) {
+            System.out.println(mark + " is a letter grade of F.");
+        } else {
+            System.out.println("Invalid input. Please enter a mark between 0 and 100.");
+        }
+
+        // Print goodbye message
+        System.out.println("Goodbye!");
+
+        // Close the scanner
+        scan.close();
+    }
+}
