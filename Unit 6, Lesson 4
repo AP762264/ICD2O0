@@ -1,1 +1,43 @@
-
+public class Strings {
+   public static void main(String [] args) {
+      String w1 = "shellshock";
+      String w2 = "shellac";
+      String w3 = "fortify";
+      
+      // Compare the words and print them in alphabetical order
+      if (w1.compareTo(w2) < 0 && w1.compareTo(w3) < 0) {
+         // w1 is first
+         if (w2.compareTo(w3) < 0) {
+            System.out.println("The first word is: " + w1);
+            System.out.println("The next word is: " + w2);
+            System.out.println("The last word is: " + w3);
+         } else {
+            System.out.println("The first word is: " + w1);
+            System.out.println("The next word is: " + w3);
+            System.out.println("The last word is: " + w2);
+         }
+      } else if (w2.compareTo(w1) < 0 && w2.compareTo(w3) < 0) {
+         // w2 is first
+         if (w1.compareTo(w3) < 0) {
+            System.out.println("The first word is: " + w2);
+            System.out.println("The next word is: " + w1);
+            System.out.println("The last word is: " + w3);
+         } else {
+            System.out.println("The first word is: " + w2);
+            System.out.println("The next word is: " + w3);
+            System.out.println("The last word is: " + w1);
+         }
+      } else {
+         // w3 is first
+         if (w1.compareTo(w2) < 0) {
+            System.out.println("The first word is: " + w3);
+            System.out.println("The next word is: " + w1);
+            System.out.println("The last word is: " + w2);
+         } else {
+            System.out.println("The first word is: " + w3);
+            System.out.println("The next word is: " + w2);
+            System.out.println("The last word is: " + w1);
+         }
+      }
+   }
+}
