@@ -1,0 +1,69 @@
+BEGIN
+    // Initialize scanner for user input
+    PRINT "Welcome to the Collatz Conjecture Program!"
+    
+    // Loop to allow the user to generate multiple sequences
+    REPEAT
+        // Prompt the user for input and validate it
+        PRINT "Enter a whole number > 0: "
+        
+        // Input validation loop to ensure the user enters a positive integer
+        REPEAT
+            // Check if input is a valid integer
+            IF input is a valid integer
+                // Check if the integer is greater than 0
+                IF input is greater than 0
+                    SET number = input // Store valid input
+                    BREAK // Exit the input validation loop
+                ELSE
+                    // Ask for a positive integer again
+                    PRINT "Please enter a positive integer > 0: "
+            ELSE
+                // Clear invalid input and ask for a valid integer
+                PRINT "Invalid input. Enter a whole number > 0: "
+                CLEAR invalid input
+        UNTIL valid input is received
+
+        // Initialize variables for the Collatz sequence generation
+        SET sequence = empty string // To store the sequence
+        SET highestValue = number // Set highest value initially as the starting number
+        SET terms = 1 // Start with the first term (the number itself)
+        
+        // Generate the Collatz sequence until reaching 1
+        WHILE number is not equal to 1
+            // Append the current number to the sequence
+            ADD current number to the sequence
+            // Update the highest value encountered in the sequence
+            IF current number > highestValue
+                UPDATE highestValue to current number
+            // Apply Collatz transformation: if even, divide by 2; if odd, multiply by 3 and add 1
+            IF number is even
+                DIVIDE number by 2
+            ELSE
+                MULTIPLY number by 3 and ADD 1
+            // Increment the number of terms in the sequence
+            INCREMENT terms by 1
+        
+        // Add the final "1" to the sequence to indicate the end of the Collatz sequence
+        ADD "1" to the sequence
+        // Count the final term (1)
+        INCREMENT terms by 1
+
+        // Display the results to the user
+        PRINT "The Collatz sequence for n is: " + sequence
+        PRINT "Number of terms = " + terms
+        PRINT "Highest value reached = " + highestValue
+        
+        // Ask if the user wants to generate another sequence
+        PRINT "Do another? (y/n): "
+        // Get the user's response
+        GET user response
+        // If the user responds with anything other than "y", end the loop
+        IF response is not "y"
+            PRINT "Goodbye!"
+            EXIT loop // End the program if user doesn't want to continue
+    UNTIL user chooses to stop
+
+    // Close the scanner object to free resources
+    CLOSE scanner
+END
