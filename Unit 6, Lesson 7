@@ -1,1 +1,33 @@
+import java.util.Scanner;
 
+public class Calc {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int secretNumber = 7;  // You can set any number between 1 and 10
+        int guess = 0;
+        int attempts = 0;
+        boolean correctGuess = false;
+        
+        // While loop for guessing, with a maximum of 5 attempts
+        while (!correctGuess && attempts < 5) {
+            System.out.print("Guess a number between 1 and 10: ");
+            guess = scanner.nextInt();  // Take the user's guess
+
+            if (guess == secretNumber) {
+                System.out.println("Right answer!");  // Correct guess
+                correctGuess = true;  // Exit the loop
+            } else {
+                System.out.println("Incorrect. Try again!");  // Incorrect guess
+            }
+            
+            attempts++;  // Increment the number of attempts
+        }
+        
+        // If the number of attempts reaches 5 without a correct guess
+        if (!correctGuess) {
+            System.out.println("You've used all your guesses. The correct number was: " + secretNumber);
+        }
+        
+        scanner.close();  // Close the scanner to avoid memory leaks
+    }
+}
