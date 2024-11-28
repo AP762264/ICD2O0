@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class CollatzConjecture {
+
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Collatz Conjecture Program!");
+
+        // Loop to allow the user to generate multiple sequences
+        while (true) {
+            System.out.print("Enter a whole number > 0: ");
+            int n;
+
+            // Input validation to ensure the user enters a positive integer
+            while (true) {
+                if (scanner.hasNextInt()) { // Check if the input is an integer
+                    n = scanner.nextInt();
+                    if (n > 0) { // Ensure the number is positive
+                        break; // Valid input, exit the validation loop
+                    } else {
+                        System.out.print("Please enter a positive integer > 0: ");
+                    }
+                } else {
+                    System.out.print("Invalid input. Enter a whole number > 0: ");
+                    scanner.next(); // Clear invalid input
+                }
+            }
+
+            // Variables to track the Collatz sequence, highest value, and term count
+            StringBuilder sequence = new StringBuilder(); // Stores the sequence
+            int highestValue = n; // Initialize highest value as the starting number
+            int terms = 0; // Initialize the term count
+
+            // Generate the Collatz sequence
+            while (n != 1) {
+                sequence.append(n).append("; "); // Append the current number to the sequence
+                terms++; // Increment the term count
+                if (n > highestValue) {
+                    highestValue = n; // Update the highest value if current n is greater
+                }
+                if (n % 2 == 0) { // If n is even
+                    n /= 2; // Divide by 2
+                } else { // If n is odd
+                    n = 3 * n + 1; // Multiply by 3 and add 1
+                }
+            }
+
+            // Add the final "1" to the sequence
+            sequence.append(1);
+            terms++; // Count the last term
+
+            // Display the results to the user
+            System.out.println("The Collatz sequence for n is: " + sequence);
+            System.out.printf("Number of terms = %d\n", terms);
+            System.out.printf("Highest value reached = %,d\n", highestValue);
+
+            // Ask the user if they want to generate another sequence
+            System.out.print("Do another? (y/n): ");
+            String response = scanner.next(); // Get user input
+            if (!response.equalsIgnoreCase("y")) { // If the response is not 'y', exit the loop
+                System.out.println("Goodbye!");
+                break;
+            }
+        }
+
+        // Close the scanner object to free resources
+        scanner.close();
+    }
+}
