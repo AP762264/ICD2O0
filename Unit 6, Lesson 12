@@ -1,0 +1,11 @@
+import java.lang.Math;
+
+class table {
+    public static void main(String [] args) {
+        // Loop from 1 to 12 to print numbers and their square roots
+        for (int x = 1; x <= 12; x++) {
+            double sr = Math.sqrt(x); // Calculate the square root of x
+            System.out.printf("%d %.4f\n", x, sr); // Print the number and its square root formatted to 4 decimal places
+        }
+    }
+}
