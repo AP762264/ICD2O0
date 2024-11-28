@@ -1,9 +1,0 @@
-class Scope {
-  public static void main(String[] args) {
-    // Declare 's' globally within the main method, outside any blocks
-    String s = "this set of brackets defines a scope";
-    
-    // Now we can access 's' here
-    System.out.println(s);
-  }
-}
