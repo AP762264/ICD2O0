@@ -1,1 +1,19 @@
+import java.io.*;
+import java.util.Scanner;
 
+class Menu {
+  public static void main(String[] args) {
+    Scanner kb = new Scanner(System.in);
+    char choice = ' ';  // Now a char instead of int
+    boolean valid = false;
+
+    while (!valid) {
+        System.out.print("Choose a, b, or c: ");
+        choice = kb.next().charAt(0);  // Get the first character from user input
+        valid = (choice == 'a' || choice == 'b' || choice == 'c');  // Check if the choice is valid
+    }
+    
+    // Display the chosen option
+    System.out.printf("You chose: %c\n", choice);
+  }
+}
