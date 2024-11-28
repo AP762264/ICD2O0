@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    // Create a Scanner object for input
+    Scanner keyboard = new Scanner(System.in);
+    
+    // Declare the variables
+    int tracks;
+    double totalMinutes = 0;
+
+    // Prompt for the number of tracks on the album
+    System.out.print("How many tracks? : ");
+    tracks = Integer.parseInt(keyboard.nextLine());
+
+    // Loop to get the track lengths and add to totalMinutes
+    for (int i = 1; i <= tracks; i++) {
+      System.out.print("How many minutes for track " + i + " ? : ");
+      double trackTime = Double.parseDouble(keyboard.nextLine());
+      totalMinutes += trackTime; // Add the track time to the total
+    }
+
+    // Display the total running time
+    System.out.printf("total running time : %.2f\n", totalMinutes);
+    
+    // Close the scanner object
+    keyboard.close();
+  }
+}
