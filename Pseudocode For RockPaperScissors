@@ -1,1 +1,33 @@
+// Prompt user for their choice  
+  PRINT "Enter your choice (r = rock, p = paper, s = scissors): "  
+  GET `playerChoice` from user  
+  CONVERT `playerChoice` to lowercase  
 
+  // Validate input  
+  IF `playerChoice` is not 'r', 'p', or 's' THEN  
+     PRINT "Invalid choice. Please enter 'r', 'p', or 's'."  
+     DECREMENT `game` by 1 // Repeat this game  
+     CONTINUE  
+
+  // Computer generates random choice  
+  SET `computerRandom` = RANDOM number between 0 and 2  
+  IF `computerRandom` = 0 THEN SET `computerChoice` = 'r'  
+  ELSE IF `computerRandom` = 1 THEN SET `computerChoice` = 'p'  
+  ELSE SET `computerChoice` = 's'  
+
+  // Display both choices  
+  PRINT "You chose: [choiceToWord(playerChoice)]"  
+  PRINT "Computer chose: [choiceToWord(computerChoice)]"  
+
+  // Determine the outcome  
+  IF `playerChoice` = `computerChoice` THEN  
+     PRINT "It's a tie!"  
+     INCREMENT `ties` by 1  
+  ELSE IF (`playerChoice` = 'r' AND `computerChoice` = 's') OR  
+          (`playerChoice` = 'p' AND `computerChoice` = 'r') OR  
+          (`playerChoice` = 's' AND `computerChoice` = 'p') THEN  
+     PRINT "You win this round!"  
+     INCREMENT `playerWins` by 1  
+  ELSE  
+     PRINT "Computer wins this round!"  
+     INCREMENT `computerWins` by 1  
