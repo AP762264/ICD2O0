@@ -1,0 +1,89 @@
+import java.util.Scanner;
+
+public class RockPaperScissors {
+
+    // Main method to execute the game
+    public static void main(String[] args) {
+        // Header: Welcome the user to the game
+        System.out.println("Welcome to Rock-Paper-Scissors!");
+        System.out.println("You will be playing against the computer.");
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt user for number of games
+        System.out.print("How many games would you like to play? ");
+        int gamesToPlay = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+        
+        // Initialize scores
+        int playerWins = 0;
+        int computerWins = 0;
+        int ties = 0;
+
+        // Play the specified number of games
+        for (int game = 1; game <= gamesToPlay; game++) {
+            System.out.println("\nGame " + game);
+            
+            // Prompt the user for their choice
+            System.out.print("Enter your choice (r = rock, p = paper, s = scissors): ");
+            char playerChoice = scanner.nextLine().toLowerCase().charAt(0);
+
+            // Validate the player's choice
+            if (playerChoice != 'r' && playerChoice != 'p' && playerChoice != 's') {
+                System.out.println("Invalid choice. Please enter 'r', 'p', or 's'.");
+                game--; // Repeat this game
+                continue;
+            }
+
+            // Computer randomly chooses
+            int computerRandom = (int) (3 * Math.random());
+            char computerChoice = (computerRandom == 0) ? 'r' : (computerRandom == 1) ? 'p' : 's';
+
+            // Display choices
+            System.out.println("You chose: " + choiceToWord(playerChoice));
+            System.out.println("Computer chose: " + choiceToWord(computerChoice));
+
+            // Determine the outcome
+            boolean playerWinsRound = (playerChoice == 'r' && computerChoice == 's') ||
+                                       (playerChoice == 'p' && computerChoice == 'r') ||
+                                       (playerChoice == 's' && computerChoice == 'p');
+            boolean computerWinsRound = (computerChoice == 'r' && playerChoice == 's') ||
+                                         (computerChoice == 'p' && playerChoice == 'r') ||
+                                         (computerChoice == 's' && playerChoice == 'p');
+
+            if (playerChoice == computerChoice) {
+                System.out.println("It's a tie!");
+                ties++;
+            } else if (playerWinsRound) {
+                System.out.println("You win this round!");
+                playerWins++;
+            } else if (computerWinsRound) {
+                System.out.println("Computer wins this round!");
+                computerWins++;
+            }
+        }
+
+        // Final scores
+        System.out.println("\nGame Over!");
+        System.out.println("Final Scores:");
+        System.out.println("You: " + playerWins);
+        System.out.println("Computer: " + computerWins);
+        System.out.println("Ties: " + ties);
+
+        scanner.close();
+    }
+
+    // Helper method to convert choices to words
+    public static String choiceToWord(char choice) {
+        switch (choice) {
+            case 'r':
+                return "Rock";
+            case 'p':
+                return "Paper";
+            case 's':
+                return "Scissors";
+            default:
+                return "Unknown";
+        }
+    }
+}
