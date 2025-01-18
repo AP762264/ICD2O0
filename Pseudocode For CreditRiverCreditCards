@@ -1,0 +1,61 @@
+START
+
+// Initialize constants and variables
+SET NUM_CUSTOMERS = 40
+SET customerCount = 0
+SET totalBalance = 0.0
+SET highestBalance = MIN_VALUE
+SET lowestBalance = MAX_VALUE
+SET highestAccount = ""
+SET lowestAccount = ""
+
+// Print header for results
+PRINT "Account     Final Balance"
+
+// Loop to generate and process data for each customer
+FOR i FROM 1 TO NUM_CUSTOMERS:
+    // Generate random account details
+    GENERATE random 5-digit account number prefixed with "B"
+    GENERATE random startingBalance (0 to 1000)
+    GENERATE random purchase amount (0 to 300)
+    GENERATE random payment amount (0 to 400)
+    GENERATE random cashback (0 to 50)
+    GENERATE random fees (0 to 30)
+
+    // Calculate the final balance
+    finalBalance = CALL finalBalance FUNCTION (startingBalance, purchase, payment, cashback, fees)
+
+    // Update totals and tracking
+    INCREMENT customerCount by 1
+    ADD finalBalance to totalBalance
+
+    IF finalBalance > highestBalance:
+        SET highestBalance = finalBalance
+        SET highestAccount = account
+
+    IF finalBalance < lowestBalance:
+        SET lowestBalance = finalBalance
+        SET lowestAccount = account
+
+    // Print the customer's account and final balance
+    PRINT account, finalBalance
+
+// Calculate average balance
+averageBalance = totalBalance / customerCount
+
+// Output summary
+PRINT "Summary:"
+PRINT "Highest Balance: ", highestAccount, highestBalance
+PRINT "Lowest Balance: ", lowestAccount, lowestBalance
+PRINT "Average Balance: ", averageBalance
+
+// Print the total number of customers processed
+PRINT "Total Customers Processed: ", customerCount
+
+END
+
+// Function to calculate the final balance
+FUNCTION finalBalance(oldBalance, purchase, payment, cashback, fees):
+    SET result = ((oldBalance - payment) * 1.28 + purchase - cashback + fees)
+    RETURN result
+END FUNCTION
