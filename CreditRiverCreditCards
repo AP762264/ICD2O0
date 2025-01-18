@@ -1,0 +1,97 @@
+/*
+ * Credit River Credit Cards
+ * --------------------------
+ * Author: [Ashwin Parameswaran]
+ * Date: [January 18, 2025]
+ * 
+ * Purpose:
+ * This program calculates the final balance for customers of the Credit River Credit Card Company.
+ * It generates random account data for 40 customers and calculates the balances based on:
+ *  - Starting balance
+ *  - Purchases made
+ *  - Payments received
+ *  - Cashback rewards
+ *  - Additional fees
+ * 
+ * The program outputs:
+ * 1. A list of all account numbers and their final balances.
+ * 2. The account with the highest final balance.
+ * 3. The account with the lowest final balance.
+ * 4. The average balance of all customers.
+ * 
+ * Notes:
+ * - All values are randomly generated for this simulation.
+ * - Final balance is calculated using the formula:
+ *   Final Balance = ((Starting Balance - Payment) * 1.28 + Purchase - Cashback + Fees)
+ */
+
+import java.util.*;
+
+public class CreditRiverCreditCards {
+    public static void main(String[] args) {
+        // Constants
+        final int NUM_CUSTOMERS = 40;
+
+        // Variables for tally and balance calculations
+        int customerCount = 0;
+        double totalBalance = 0.0;
+        String highestAccount = "";
+        double highestBalance = Double.MIN_VALUE;
+        String lowestAccount = "";
+        double lowestBalance = Double.MAX_VALUE;
+
+        // Random data generator
+        Random rand = new Random();
+
+        System.out.printf("%-10s %12s\n", "Account", "Final Balance");
+        System.out.println("----------------------------");
+
+        // Loop to generate and process data for each customer
+        for (int i = 0; i < NUM_CUSTOMERS; i++) {
+            // Generate random account data
+            String account = "B" + (rand.nextInt(90000) + 10000); // Random 5-digit account number
+            double startingBalance = rand.nextDouble() * 1000; // Starting balance between 0 and 1000
+            double purchase = rand.nextDouble() * 300; // Purchase between 0 and 300
+            double payment = rand.nextDouble() * 400; // Payment between 0 and 400
+            double cashback = rand.nextDouble() * 50; // Cashback reward between 0 and 50
+            double fees = rand.nextDouble() * 30; // Fees between 0 and 30
+
+            // Calculate the final balance with added factors
+            double finalBalance = finalBalance(startingBalance, purchase, payment, cashback, fees);
+
+            // Update totals and tracking
+            customerCount++;
+            totalBalance += finalBalance;
+
+            if (finalBalance > highestBalance) {
+                highestBalance = finalBalance;
+                highestAccount = account;
+            }
+            if (finalBalance < lowestBalance) {
+                lowestBalance = finalBalance;
+                lowestAccount = account;
+            }
+
+            // Print the result for the customer
+            System.out.printf("%-10s %12.2f\n", account, finalBalance);
+        }
+
+        // Calculate average balance
+        double averageBalance = totalBalance / customerCount;
+
+        // Output summary
+        System.out.println("\nSummary:");
+        System.out.printf("Highest Balance: %s ($%.2f)\n", highestAccount, highestBalance);
+        System.out.printf("Lowest Balance: %s ($%.2f)\n", lowestAccount, lowestBalance);
+        System.out.printf("Average Balance: $%.2f\n", averageBalance);
+        
+        // Print the total number of customers processed
+        System.out.printf("\nTotal Customers Processed: %d\n", customerCount);
+    }
+
+    // Function to calculate the final balance with cashback and fees
+    public static double finalBalance(double oldBalance, double purchase, double payment, double cashback, double fees) {
+        double result = ((oldBalance - payment) * 1.28 + purchase - cashback + fees);
+        return result;
+    }
+}
